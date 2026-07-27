@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base target="_top">
+  <meta charset="utf-8">
+  <title>Work Order Report</title>
+
+  <style>
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+
+      @page {
+        margin: 12mm;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      thead {
+        display: table-header-group;
+      }
+
+      tfoot {
+        display: table-footer-group;
+      }
+
+      tr,
+      td,
+      th {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      h2,
+      h3 {
+        break-after: avoid;
+        page-break-after: avoid;
+      }
+
+      table {
+        width: 100%;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+  <h2>Work Order Report:
+    <?= workOrderId ?>
+  </h2>
+
+  <h3>Work Order Details</h3>
+  <table border="1" cellpadding="6" cellspacing="0">
+    <tbody>
+      <tr>
+        <td><strong>Operator</strong></td>
+        <td>
+          <?= workOrder.Operator || '' ?>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Timestamp</strong></td>
+        <td>
+          <?= workOrder.Timestamp || '' ?>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Recorded Date</strong></td>
+        <td>
+          <?= workOrder.Recorded_Date || '' ?>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Subject</strong></td>
+        <td>
+          <?= workOrder.Subject || '' ?>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Operation</strong></td>
+        <td>
+          <?= workOrder.Operation || '' ?>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Category</strong></td>
+        <td>
+          <?= workOrder.Category || '' ?>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Operation Detail</strong></td>
+        <td>
+          <?= workOrder.Operation_Detail || '' ?>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Total Overall Input Weight</strong></td>
+        <td>
+          <?= workOrder.Total_Input_Weight || '' ?>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Total Cannabis Input Weight</strong></td>
+        <td>
+          <?= workOrder.Total_Cannabis || '' ?>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Total Non-cannabis Input Weight</strong></td>
+        <td>
+          <?= workOrder.Total_Non_Cannabis || '' ?>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Total Overall Output Weight</strong></td>
+        <td>
+          <?= workOrder.Total_Output_Weight || '' ?>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Total Usable Output Weight</strong></td>
+        <td>
+          <?= workOrder.Total_Usable || '' ?>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Total Processing Loss</strong></td>
+        <td>
+          <?= workOrder.Total_Processing_Loss || '' ?>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Total Destruction Weight</strong></td>
+        <td>
+          <?= workOrder.Total_Destruction_Weight || '' ?>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Status</strong></td>
+        <td>
+          <?= workOrder.Status || '' ?>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Notes</strong></td>
+        <td>
+          <?= workOrder.Notes || '' ?>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br>
+
+  <h3>Inputs</h3>
+  <? if (inputs && inputs.length > 0) { ?>
+  <table border="1" cellpadding="6" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Input ID</th>
+        <th>Input Lot</th>
+        <th>NC Input Lot</th>
+        <th>Receiving Lot</th>
+        <th>Input Weight</th>
+        <th>What</th>
+        <th>WO ID</th>
+        <th>Pushed</th>
+      </tr>
+    </thead>
+    <tbody>
+      <? for (var i = 0; i < inputs.length; i++) { ?>
+      <tr>
+        <td>
+          <?= inputs[i].Input_ID || '' ?>
+        </td>
+        <td>
+          <?= inputs[i].Input_Lot || '' ?>
+        </td>
+        <td>
+          <?= inputs[i].NC_Input_Lot || '' ?>
+        </td>
+        <td>
+          <?= inputs[i].Receiving_Lot || '' ?>
+        </td>
+        <td>
+          <?= inputs[i].Input_Weight || '' ?>
+        </td>
+        <td>
+          <?= inputs[i].What || '' ?>
+        </td>
+        <td>
+          <?= inputs[i].WO_ID || '' ?>
+        </td>
+        <td>
+          <?= inputs[i].Pushed || '' ?>
+        </td>
+      </tr>
+      <? } ?>
+    </tbody>
+  </table>
+  <? } else { ?>
+  <p>No input records found.</p>
+  <? } ?>
+
+  <br>
+
+  <h3>Outputs</h3>
+  <? if (outputs && outputs.length > 0) { ?>
+  <table border="1" cellpadding="6" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Output ID</th>
+        <th>Output Lot</th>
+        <th>Going To</th>
+        <th>Output Weight</th>
+        <th>What</th>
+        <th>Loss</th>
+        <th>Dest</th>
+        <th>WO ID</th>
+        <th>Pushed</th>
+      </tr>
+    </thead>
+    <tbody>
+      <? for (var j = 0; j < outputs.length; j++) { ?>
+      <tr>
+        <td>
+          <?= outputs[j].Output_ID || '' ?>
+        </td>
+        <td>
+          <?= outputs[j].Output_Lot || '' ?>
+        </td>
+        <td>
+          <?= outputs[j].Going_To || '' ?>
+        </td>
+        <td>
+          <?= outputs[j].Output_Weight || '' ?>
+        </td>
+        <td>
+          <?= outputs[j].What || '' ?>
+        </td>
+        <td>
+          <?= outputs[j].Loss || '' ?>
+        </td>
+        <td>
+          <?= outputs[j].Dest || '' ?>
+        </td>
+        <td>
+          <?= outputs[j].WO_ID || '' ?>
+        </td>
+        <td>
+          <?= outputs[j].Pushed || '' ?>
+        </td>
+      </tr>
+      <? } ?>
+    </tbody>
+  </table>
+  <? } else { ?>
+  <p>No output records found.</p>
+  <? } ?>
+
+  <br>
+
+  <button class="no-print" onclick="window.print()">Print</button>
+</body>
+
+</html>
