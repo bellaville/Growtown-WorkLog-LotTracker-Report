@@ -89,21 +89,22 @@ function getWorkOrderResult(rows) {
 
     const result = {
         "Operator": rows[0].f[1].v,
-        "Timestamp": getTimeStamp(rows[0].f[2].v),
-        "Recorded_Date": rows[0].f[3].v,
-        "Subject": rows[0].f[4].v || "none",
-        "Operation": rows[0].f[5].v,
-        "Category": rows[0].f[6].v || "none",
-        "Operation_Detail": rows[0].f[7].v || "none",
-        "Total_Input_Weight": rows[0].f[8].v,
-        "Total_Cannabis": rows[0].f[9].v,
-        "Total_Non_Cannabis": rows[0].f[10].v,
-        "Total_Output_Weight": rows[0].f[11].v || "none",
-        "Total_Usable": rows[0].f[12].v || "none",
-        "Total_Processing_Loss": rows[0].f[13].v || "none",
-        "Total_Destruction_Weight": rows[0].f[14].v || "none",
-        "Status": rows[0].f[15].v,
-        "Notes": rows[0].f[16].v
+        "Email": rows[0].f[2].v,
+        "Timestamp": getTimeStamp(rows[0].f[3].v),
+        "Recorded_Date": rows[0].f[4].v,
+        "Subject": rows[0].f[5].v || "none",
+        "Operation": rows[0].f[6].v,
+        "Category": rows[0].f[7].v || "none",
+        "Operation_Detail": rows[0].f[8].v || "none",
+        "Total_Input_Weight": rows[0].f[9].v,
+        "Total_Cannabis": rows[0].f[10].v,
+        "Total_Non_Cannabis": rows[0].f[11].v,
+        "Total_Output_Weight": rows[0].f[12].v || "none",
+        "Total_Usable": rows[0].f[13].v || "none",
+        "Total_Processing_Loss": rows[0].f[14].v || "none",
+        "Total_Destruction_Weight": rows[0].f[15].v || "none",
+        "Status": rows[0].f[16].v,
+        "Notes": rows[0].f[17].v
     }
 
     return result;

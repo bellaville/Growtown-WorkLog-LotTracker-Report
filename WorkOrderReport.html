@@ -45,13 +45,19 @@
         width: 100%;
       }
     }
+
+    body {
+      display: grid;
+      place-items: center;
+    }
   </style>
 
 </head>
 
 <body>
   <h2>Work Order Report:
-    <?= workOrderId ?>
+    <?= workOrderId ?> -
+    <?= workOrder.Operation ?>
   </h2>
 
   <h3>Work Order Details</h3>
@@ -61,6 +67,12 @@
         <td><strong>Operator</strong></td>
         <td>
           <?= workOrder.Operator || '' ?>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Email</strong></td>
+        <td>
+          <?= workOrder.Email || '' ?>
         </td>
       </tr>
       <tr>
@@ -220,8 +232,8 @@
         <th>Going To</th>
         <th>Output Weight</th>
         <th>What</th>
-        <th>Loss</th>
-        <th>Dest</th>
+        <th>Processing Loss?</th>
+        <th>For Destruction?</th>
         <th>WO ID</th>
         <th>Pushed</th>
       </tr>
